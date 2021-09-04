@@ -13,7 +13,7 @@ class Color
 
            }
 
-        //   Red_Begin
+//  Red_Begin
            private function setRed (string $red){
                $this->red = $red;
                if ($red<0||$red>255){
@@ -23,9 +23,9 @@ class Color
            public function getRed (): int{
                return $this->red;
            }
-        //   Red_End
+//  Red_End
 
-        //Green_Begin
+//  Green_Begin
             private function setGreen (int $green){
                $this->green = $green;
                    if ($green<0||$green>255){
@@ -37,9 +37,9 @@ class Color
                return $this->green;
             }
 
-        //Green_End
+//  Green_End
 
-        //Blue_Begin
+//  Blue_Begin
             private function setBlue (int $blue){
                 $this->blue = $blue;
                  if ($blue<0||$blue>255){
@@ -50,13 +50,30 @@ class Color
             public function getBlue ():int{
                   return $this->blue;
             }
-        //Blue_End
+//  Blue_End
 
+//  Mix_Function_Begin
             public function mix (Color $second): Color {
                return new Color(($this -> getRed() + $second ->getRed())/2,
                                 ($this->getGreen() + $second ->getGreen()) /2,
                                 ($this ->getBlue() + $second ->getBlue()) /2
                );
+            }
+//  Mix_Function_End
+
+            public function equals (Color $second):bool  {
+               $r = null;
+               $g = null;
+               $b = null;
+               $result = null;
+
+               if ($this->getRed() == $second->getRed())        {$r = true;} else{$r = false;}
+               if ($this->getGreen() == $second->getGreen())    {$g = true;} else{$g = false;}
+               if ($this ->getBlue() == $second->getBlue())     {$b = true;} else{$b = false;}
+
+               if ($r == true & $g == true & $b == true)        {$result = true;} else{$result = false;}
+
+               return $result;
             }
 
     };
@@ -64,14 +81,15 @@ class Color
 
 $q = new Color('200', '200', '200');
 //$w = new Color('100', '100', '100');
-$e = $q->mix(new Color('100', '100', '100'));
-echo '<pre>';
-var_dump($e);
-echo '<pre>';
-echo $e->getRed();
-echo $e->getGreen();
-echo $e->getBlue();
+$e = $q->mix(new Color('200', '200', '200'));
+//echo '<pre>';
+//var_dump($e);
+//echo '<pre>';
+//echo $e->getRed();
+//echo $e->getGreen();
+//echo $e->getBlue();
 
-
+if (!$q -> equals($e)){
+    echo 'nop';}else{echo 'yep';}
 
 ?>
