@@ -79,17 +79,18 @@ class Color
     };
 
 
-$q = new Color('200', '200', '200');
-//$w = new Color('100', '100', '100');
-$e = $q->mix(new Color('200', '200', '200'));
-//echo '<pre>';
-//var_dump($e);
-//echo '<pre>';
-//echo $e->getRed();
-//echo $e->getGreen();
-//echo $e->getBlue();
+$color = new Color(200, 200, 200);
+$mixedColor = $color->mix(new Color(100, 100, 100));
+echo '<pre>';
+echo $mixedColor->getRed(); // 150
+echo '<pre>';
+echo $mixedColor->getGreen(); // 150
+echo '<pre>';
+echo $mixedColor->getBlue(); // 150
+echo '<pre>';
 
-if (!$q -> equals($e)){
-    echo 'nop';}else{echo 'yep';}
+if (!$color->equals($mixedColor)) {
+    echo 'Цвета не равні';
+}
 
 ?>
